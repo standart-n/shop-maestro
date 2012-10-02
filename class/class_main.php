@@ -4,6 +4,7 @@ var $pl=array();
 
 function engine() {
 	$q=new q;
+	require_once("class/class_r.php");
 	foreach (array("configure","plugins","base","display") as $key) { 
 		$this->$key($q); 
 	}

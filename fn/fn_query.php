@@ -83,7 +83,15 @@ function fbSelect($q,$fb,&$r="") { $rt=false; $ms=array();
 			}
 		}
 	} }
-	if (sizeof($ms)==1) { $r=$ms[0]; } else { $r=$ms; }
+	if ($fb["clt"]=="auto") {
+		if (sizeof($ms)==1) { $r=$ms[0]; } else { $r=$ms; }
+	}
+	if ($fb["clt"]=="array") {
+		$r=$ms;
+	}
+	if ($fb["clt"]=="row") {
+		$r=$ms[0];
+	}
 	return $rt;
 }
 
@@ -98,18 +106,44 @@ function execQuery(&$q,$method,$ms,&$r="") { $a=array();
 				$sql=$ms["sql"];
 			}
 		}
+
+		if (isset($ms["collection"])) {
+			if (in_array($ms["collection"],array("auto","array","row"))) {
+				$clt=$ms["collection"];
+			}
+		}
+		if (!isset($clt)) { 
+			if (isset($q->database)) {
+				if (isset($q->database->settings)) {
+					if (isset($q->database->settings->collection_of_data_return)) {
+						$clt=$q->database->settings->collection_of_data_return;
+					}
+				}
+			}
+		}
+		if (!isset($clt)) {
+			$clt="auto";
+		}
+
+
 		if (isset($ms["get"])) {
 			if (in_array($ms["get"],array("object","array"))) {
 				$get=$ms["get"];
 			}
 		}
 		if (!isset($get)) { 
-			if (isset($q->database->settings->type_of_data_return)) {
-				$get=$q->database->settings->type_of_data_return;
-			} else {
-				$get="object";
+			if (isset($q->database)) {
+				if (isset($q->database->settings)) {
+					if (isset($q->database->settings->count_of_data_return)) {
+						$get=$q->database->settings->count_of_data_return;
+					}
+				}
 			}
 		}
+		if (!isset($get)) {
+			$get="object";
+		}
+
 		if (isset($ms["limit"])) {
 			$limit=intval($ms["limit"]);
 		}
@@ -126,7 +160,7 @@ function execQuery(&$q,$method,$ms,&$r="") { $a=array();
 					if (isset($q->$cn)) {
 						if ((isset($q->$cn->$it)) && (isset($q->$cn->db))) {
 							switch ($method) {
-								case "select": $rt=$this->fbSelect($q,array("cn"=>$cn,"it"=>$it,"sql"=>$sql,"get"=>$get,"limit"=>$limit),$r); break;
+								case "select": $rt=$this->fbSelect($q,array("cn"=>$cn,"it"=>$it,"sql"=>$sql,"get"=>$get,"clt"=>$clt,"limit"=>$limit),$r); break;
 								case "update": $rt=$this->fbUpdate($q,array("cn"=>$cn,"it"=>$it,"sql"=>$sql),$r); break;
 								case "insert": $rt=$this->fbInsert($q,array("cn"=>$cn,"it"=>$it,"sql"=>$sql),$r); break;
 								case "delete": $rt=$this->fbSelect($q,array("cn"=>$cn,"it"=>$it,"sql"=>$sql),$r); break;

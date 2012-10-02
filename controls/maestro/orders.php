@@ -57,24 +57,25 @@ function getOrderDetailCount($q) { $count=0;
 function getOrderDetailList($q) { $ms=array(); $a=array(); $i=0; $total=0;
 	if (isset($q->user->id)) { if (isset($q->user->order->id)) {
 		$sql=$q->sql_orders->getOrderDetailList($q);
-		if (query($q,$sql,$m)) {
-			foreach ($m as $r) { $i++;
+		if (query($q,array("sql"=>$sql,"collection"=>"array"),$m)) {
+			foreach ($m as $r) { unset($row);
+				$i++; $row=new r;
 				foreach (array("ID","SNAME","QUANT","SERIA","SCOUNTRY","PRICE") as $key) {
 					if (isset($r->$key)) { 
-						$r->$key=$q->validate->toUTF($r->$key);
+						$row->$key=$q->validate->toUTF($r->$key);
 					} else {
-						$r->$key="";
+						$row->$key="";
 					}
 				}
-				$r->i=$i;
-				$r->SERIA=strval($r->SERIA);
-				$r->SCOUNTRY=strval($r->SCOUNTRY);
-				$r->PRICE=floatval($r->PRICE);
-				$r->SUMM=floatval($r->SUMM);
-				$r->QUANT=floatval($r->QUANT);
-				//$r->SUMM=floatval($r->PRICE*$r->QUANT);
-				$total+=$r->SUMM;
-				$ms[]=$r;
+				$row->i=$i;
+				$row->SERIA=strval($row->SERIA);
+				$row->SCOUNTRY=strval($row->SCOUNTRY);
+				$row->PRICE=floatval($row->PRICE);
+				$row->SUMM=floatval($row->SUMM);
+				$row->QUANT=floatval($row->QUANT);
+				$row->RSUMM=floatval($row->PRICE*$row->QUANT);
+				$total+=$row->RSUMM;
+				$ms[]=$row;
 			}
 		}
 	} }

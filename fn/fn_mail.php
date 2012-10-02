@@ -1,4 +1,15 @@
 <?php class fn_mail {
+
+function onLoad(&$q) {
+	eval($this->sendMail());
+}
+
+function sendMail() { $s="";
+	$s.='function sendMail(&$q,$to="",$subject="",$body="",$from=""){';
+	$s.='$q->fn_mail->send($q,$to,$subject,$body,$from);';
+	$s.='}';
+	return $s;
+}
  
 function send($q,$to="",$subject="",$body="",$from="") { $send=false; $lib=false;
 
