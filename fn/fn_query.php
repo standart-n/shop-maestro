@@ -26,7 +26,7 @@ function delete(&$q,$a,&$r="") { $ms=array();
 
 
 
-function fbUpdate($q,$fb,&$r="") { $rt=false;
+function fbUpdate(&$q,$fb,&$r="") { $rt=false;
 	$query=@ibase_query($q->$fb["cn"]->$fb["it"],$fb["sql"]);
 	if (isset($query)) { if ($query) { 
 		$rt=true;
@@ -37,7 +37,7 @@ function fbUpdate($q,$fb,&$r="") { $rt=false;
 	return $rt;
 }
 
-function fbInsert($q,$fb,&$r="") { $rt=false;
+function fbInsert(&$q,$fb,&$r="") { $rt=false;
 	$query=@ibase_query($q->$fb["cn"]->$fb["it"],$fb["sql"]);
 	if (isset($query)) { if ($query) { 
 		$rt=true;
@@ -48,7 +48,7 @@ function fbInsert($q,$fb,&$r="") { $rt=false;
 	return $rt;
 }
 
-function fbDelete($q,$fb,&$r="") { $rt=false;
+function fbDelete(&$q,$fb,&$r="") { $rt=false;
 	$query=@ibase_query($q->$fb["cn"]->$fb["it"],$fb["sql"]);
 	if (isset($query)) { if ($query) { 
 		$rt=true;
@@ -59,7 +59,7 @@ function fbDelete($q,$fb,&$r="") { $rt=false;
 	return $rt;
 }
 
-function fbSelect($q,$fb,&$r="") { $rt=false; $ms=array();
+function fbSelect(&$q,$fb,&$r="") { $rt=false; $ms=array();
 	$query=@ibase_query($q->$fb["cn"]->$fb["it"],$fb["sql"]);
 	if (isset($query)) { if ($query) { $rt=true;
 		if ($fb["get"]=="object") {
@@ -163,7 +163,7 @@ function execQuery(&$q,$method,$ms,&$r="") { $a=array();
 								case "select": $rt=$this->fbSelect($q,array("cn"=>$cn,"it"=>$it,"sql"=>$sql,"get"=>$get,"clt"=>$clt,"limit"=>$limit),$r); break;
 								case "update": $rt=$this->fbUpdate($q,array("cn"=>$cn,"it"=>$it,"sql"=>$sql),$r); break;
 								case "insert": $rt=$this->fbInsert($q,array("cn"=>$cn,"it"=>$it,"sql"=>$sql),$r); break;
-								case "delete": $rt=$this->fbSelect($q,array("cn"=>$cn,"it"=>$it,"sql"=>$sql),$r); break;
+								case "delete": $rt=$this->fbDelete($q,array("cn"=>$cn,"it"=>$it,"sql"=>$sql),$r); break;
 							}
 						}
 					}

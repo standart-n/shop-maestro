@@ -71,8 +71,7 @@ function sendOrder($q,$st=2) { $s=""; $tm=time();
 }
 
 function deleteLine($q) { $s="";
-	$s.="DELETE FROM MAGAZINE_ORDER_DETAIL ";
-	$s.="WHERE (1=1) ";
+	$s.="DELETE FROM MAGAZINE_ORDER_DETAIL WHERE (1=1) ";
 	$s.="AND (ORDER_ID=".$q->user->order->id.") ";
 	$s.="AND (PART_ID=".$q->url->id.") ";
 	return $s;

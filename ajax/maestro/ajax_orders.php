@@ -120,10 +120,10 @@ function deleteLine(&$q) {  $s=""; $bar=""; $j=&$q->json; $u=&$q->url;
 					$a=$q->orders->getOrderDetailList($q);
 					$total=$a['total'];
 					$count=$a['count'];
-					$bar=$q->tpl_design->bar($q,$count);	
+					$bar=$q->design->bar($q);
 				}
 			}
-		}
+		}		
 		$j['res']=$s;
 		$j['bar']=$bar;
 		$j['total']=$total;
