@@ -3,6 +3,6 @@
 	"host":"ssl://smtp.yandex.ru",
 	"port":"465",
 	"login":"shop-maestro18@yandex.ru",
-	"password":"GjxnfVftcnhj",
+	"password":"",
 	"lib":"/usr/share/php/Mail.php"
 }
