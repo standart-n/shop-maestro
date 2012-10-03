@@ -1,19 +1,23 @@
 <?php class tpl_mail {
 
-function sendOrder($ms) { $a=array(); $s=""; $t=""; $n="\r\n";
-	$t.='Ваш заказ №20120916-306667 принят в обработку';
+function sendOrder($ms) { $a=array(); $s=""; $t=""; $n="\r\n"; $tab="\t";
+	$t.='Ваш заказ №'.$ms["orderId"].' принят в обработку';
 
-	$s.='Здравствуйте, Алексей Николаев!'.$n.$n;
+	$s.='Здравствуйте, '.$ms["user"]->FIRSTNAME.' '.$ms["user"]->LASTNAME.'!'.$n.$n;
 	$s.='Благодарим Вас за совершенный заказ на сайте Maestro18.ru'.$n;
 	$s.='В ближайшее время Ваш заказ будет принят в обработку.'.$n;
 	$s.=$n;
 	$s.='Способ оплаты: Наличными.'.$n;
-	$s.='Ваш логин: aleksnick@list.ru'.$n;
-	$s.='Ваш пароль: ZfTDHr'.$n;
+	if (isset($ms["pwd"])) {
+		$s.='Ваш логин: '.$ms["user"]->EMAIL.$n;
+		$s.='Ваш пароль: '.$ms["pwd"].$n;
+	}
 	$s.=$n;
-	$s.='Ваш заказ №20120916'.$n;
-	$s.='--'.$n;
-	$s.='Сумма заказа - 5000 руб.'.$n;
+	$s.='Ваш заказ №'.$ms["orderId"].':'.$n;
+	foreach ($ms["order"] as $r) {
+		$s.=$r->SNAME.$tab.$r->QUANT.'шт.'.$tab.$r->RSUMM.'руб.'.$n;
+	}
+	$s.='Сумма заказа - '.$ms["total"].'руб.'.$n;
 	$s.=$n;
 	$s.='Для получения информации о заказе, Вы можете позвонить нам по бесплатному номеру'.$n;
 	$s.='8 (3412) 52-95-62 или написать по адресу shop.maestro18.ru'.$n;
@@ -23,7 +27,7 @@ function sendOrder($ms) { $a=array(); $s=""; $t=""; $n="\r\n";
 	return $a;
 }
 
-function forgotPassword($ms) {  $a=array(); $s=""; $t=""; $n="\r\n";
+function forgotPassword($ms=array()) {  $a=array(); $s=""; $t=""; $n="\r\n";
 	$t.='Ваш заказ №20120916-306667 принят в обработку';
 		
 	$s.='Здравствуйте, Алексей Николаев!'.$n.$n;
@@ -34,7 +38,7 @@ function forgotPassword($ms) {  $a=array(); $s=""; $t=""; $n="\r\n";
 	return $a;
 }
 
-function regUser($ms) {  $a=array(); $s=""; $t=""; $n="\r\n";
+function regUser($ms=array()) {  $a=array(); $s=""; $t=""; $n="\r\n";
 	$t.='Ваш заказ №20120916-306667 принят в обработку';
 	$s.='Здравствуйте, Алексей Николаев!'.$n.$n;
 	$s.='Вы успешно зарегистрировались на сайте www.maestro18.ru'.$n;

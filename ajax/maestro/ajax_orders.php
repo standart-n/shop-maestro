@@ -22,7 +22,7 @@ function engine(&$q) {
 	}
 }
 
-function send(&$q) { $s=""; $e=""; $eL=""; $bar=""; $eT=""; $reg=""; $j=&$q->json; $u=&$q->url; $check=true;
+function send(&$q) { $s=""; $e=""; $eL=""; $bar=""; $eT=""; $reg=""; $pwd=""; $j=&$q->json; $u=&$q->url; $check=true;
 	if ($q->referer=="http://".$q->url->site."/type:order/page:mount") {
 		if (!isset($q->user->id)) { $e="Пользователь не определен"; $check=false; } else {
 			if (!isset($q->user->order->id)) { $e="Информация о Вашем заказе не найдена"; $check=false; } else {
@@ -48,7 +48,10 @@ function send(&$q) { $s=""; $e=""; $eL=""; $bar=""; $eT=""; $reg=""; $j=&$q->jso
 		if ($check) { $e="Ваш заказ успешно отправлен"; }
 		if ($check) { $j['check']="TRUE"; } else { $j['check']="FALSE"; }
 		if ($check) {
-			$reg=$q->users->regUserAfterSendOrder($q);
+			$reg=$q->users->regUserAfterSendOrder($q,$pwd);
+		}
+		if ($check) {
+			$q->orders->sendMailAfterSendOrder($q,$pwd);
 		}
 		if ($check) {
 			$bar=$q->tpl_design->bar($q,0);

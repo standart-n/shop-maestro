@@ -116,7 +116,7 @@ function getHistoryOrder(&$q) { $s=""; $j=0; $ms=array(); $a=array();
 								$r_sub->PRICE=floatval($r_sub->PRICE);
 								$r_sub->SUMM=floatval($r_sub->SUMM);
 								$r_sub->QUANT=floatval($r_sub->QUANT);
-								//$r_sub->SUMM=floatval($r_sub->PRICE*$r_sub->QUANT);
+								$r_sub->RSUMM=floatval($r_sub->PRICE*$r_sub->QUANT);
 								$total+=$r_sub->SUMM;
 								$r->MS[]=$r_sub;
 							}
@@ -218,6 +218,50 @@ function sendOrder(&$q) { $send=false;
 	return $send;
 }
 
+function sendMailAfterSendOrder(&$q,$pwd) { $ms=array(); $a=array(); $i=0; $total=0;
+	if (isset($q->user->id)) { if (isset($q->user->order->id)) {
+		$sql=$q->sql_orders->getOrderDetailList($q);
+		if (query($q,array("sql"=>$sql,"collection"=>"array"),$m)) {
+			foreach ($m as $r) { unset($row);
+				$i++; $row=new r;
+				foreach (array("ID","SNAME","QUANT","SERIA","SCOUNTRY","PRICE") as $key) {
+					if (isset($r->$key)) { 
+						$row->$key=$q->validate->toUTF($r->$key);
+					} else {
+						$row->$key="";
+					}
+				}
+				$row->i=$i;
+				$row->SERIA=strval($row->SERIA);
+				$row->SCOUNTRY=strval($row->SCOUNTRY);
+				$row->PRICE=floatval($row->PRICE);
+				$row->SUMM=floatval($row->SUMM);
+				$row->QUANT=floatval($row->QUANT);
+				$row->RSUMM=floatval($row->PRICE*$row->QUANT);
+				$total+=$row->RSUMM;
+				$ms[]=$row;
+			}
+		}
+	} }
+	if (sizeof($ms)>0) {
+		$mu=$q->users->getUserData(&$q);
+		$m=$q->tpl_mail->sendOrder(array("user"=>$mu[0],
+										 "order"=>$ms,
+										 "total"=>$total,
+										 "orderId"=>$q->user->order->id,
+										 "pwd"=>$pwd
+										 ));
+		$m["text"]=$q->validate->toWin($m["text"]);
+		if (isset($mu[0])) {
+			if (isset($mu[0]->EMAIL)) {
+				if (($mu[0]->EMAIL!="") && ($m["theme"]!="") && ($m["text"]!="")) {
+					sendMail($q,$mu[0]->EMAIL,$m["theme"],$m["text"]);
+				}
+			}
+		}
+	}	
+}
+
 function partIsAdded(&$q) { $part_exists=false;
 	if (isset($q->user->id)) { if (isset($q->user->order->id)) { if ($q->url->id>0) {
 		$sql=$q->sql_orders->partIsAdded($q);
@@ -232,7 +276,7 @@ function partIsAdded(&$q) { $part_exists=false;
 	return $part_exists;
 }
 
-function addComment(&$q,$comment="") { $add=false;
+function addComment(&$q,$comment="") { $add=false; $m=array();
 	$comment=$q->validate->toWin($comment);
 	if (isset($q->user->id)) { if (isset($q->user->order->id)) {
 		if (isset($comment)) {

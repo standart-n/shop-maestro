@@ -192,7 +192,7 @@ function getUserData(&$q) { $ms=array();
 	return $ms;
 }
 
-function regUserAfterSendOrder(&$q) { $s=""; $ms=array();
+function regUserAfterSendOrder(&$q,&$pwd="") { $s=""; $ms=array();
 	if (isset($q->user->id)) {
 		$ms=$this->getUserData($q);
 		if ($ms[0]->PASSWORD=="") {
