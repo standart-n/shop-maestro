@@ -19,6 +19,12 @@ function usersShow(&$q) { $s="";
 		case "enter":
 			$s.=$this->showEnter($q);
 		break;
+		case "forgot":
+			$s.=$this->showForgotPassword($q);
+		break;
+		case "registration":
+			$s.=$this->showRegistration($q);
+		break;
 		}
 	}
 	return $s;	
@@ -34,6 +40,16 @@ function actions(&$q) {
 
 function showEnter(&$q) { $s="";
 	$s.=$q->tpl_users->showEnter($q);
+	return $s;	
+}
+
+function showForgotPassword(&$q) { $s="";
+	$s.=$q->tpl_users->forgotPassword($q);
+	return $s;	
+}
+
+function showRegistration(&$q) { $s="";
+	$s.=$q->tpl_users->showRegistration($q);
 	return $s;	
 }
 
