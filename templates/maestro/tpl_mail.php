@@ -9,8 +9,10 @@ function sendOrder($ms) { $a=array(); $s=""; $t=""; $n="\r\n"; $tab="\t";
 	$s.=$n;
 	$s.='Способ оплаты: Наличными.'.$n;
 	if (isset($ms["pwd"])) {
-		$s.='Ваш логин: '.$ms["user"]->EMAIL.$n;
-		$s.='Ваш пароль: '.$ms["pwd"].$n;
+		if ($ms["pwd"]!="") {
+			$s.='Ваш логин: '.$ms["user"]->EMAIL.$n;
+			$s.='Ваш пароль: '.$ms["pwd"].$n;
+		}
 	}
 	$s.=$n;
 	$s.='Ваш заказ №'.$ms["orderId"].':'.$n;

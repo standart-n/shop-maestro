@@ -16,6 +16,16 @@ function toModel(&$q,$s="",$tag="",$type="simple") {
 	}
 }
 
+function toUTF($a) { $s="";
+	$s.=trim(iconv("cp1251","UTF-8",$a));
+	return $s;
+}
+
+function toWin($a) { $s="";
+	$s.=trim(iconv("UTF-8","cp1251",$a));
+	return $s;
+}
+
 function getImage($r) { $s=""; $ex=false; $img=""; $p="img/price/"; $ext=".jpg";
 	if (file_exists($p."SERIA".$r->SERIA.$ext)) { $img=$p."SERIA".$r->SERIA.$ext; }
 	if (file_exists($p."SERIA".$r->SERIA."~".$ext)) { $img=$p."SERIA".$r->SERIA."~".$ext; }
