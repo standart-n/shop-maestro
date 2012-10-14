@@ -5,7 +5,7 @@ function toolbar($q) { $s="";
 	$s.='<tr valign="top">';
 	$s.=	'<td>';
 	$s.=	$this->toolbarLine($q,"main","Главная","disable",false);
-	$s.=	$this->toolbarLine($q,"company","О нас","disable",true);
+	//$s.=	$this->toolbarLine($q,"company","О нас","disable",true);
 	$s.=	$this->toolbarLine($q,"service","Сервис","disable",true);
 	$s.=	$this->toolbarLine($q,"contacts","Контакты","disable",true);
 	$s.=	$this->toolbarLine($q,"test","Тест","active",false,true);

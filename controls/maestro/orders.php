@@ -86,11 +86,12 @@ function getOrderDetailList($q) { $ms=array(); $a=array(); $i=0; $total=0;
 function getHistoryOrder(&$q) { $s=""; $j=0; $ms=array(); $a=array();
 	if (isset($q->user->id)) {
 		$sql=$q->sql_orders->getHistoryOrder($q);
-		if (query($q,$sql,$m)) {
-			foreach ($m as $r) { $j++;
+		if (query($q,array("sql"=>$sql,"collection"=>"array"),$m)) {
+			foreach ($m as $rr) { $j++;
+				$r=new r;
 				foreach (array("ID","STATUS","POSTDT","POSTTIME") as $key) {
-					if (isset($r->$key)) { 
-						$r->$key=$q->validate->toUTF($r->$key);
+					if (isset($rr->$key)) {
+						$r->$key=$q->validate->toUTF($rr->$key);
 					} else {
 						$r->$key="";
 					}
