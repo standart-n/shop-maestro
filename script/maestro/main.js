@@ -187,12 +187,14 @@ $(function(){
 $(function(){
 	$("#search-value").on("focus",function(){
 		$("div#search-wrap").removeClass("search-wrap").addClass("search-wrap-active");
-		$(this).animate({'width':'300px',},"slow").removeClass("input-search").addClass("input-search-active");
+		$(this).removeClass("input-search").addClass("input-search-active");
+		//$(this).animate({'width':'300px',},"slow").removeClass("input-search").addClass("input-search-active");
 		if ($(this).val()=="Поиск по всем товарам...") { $(this).val(""); }
 	});
 	$("#search-value").on("blur",function(){
 		$("div#search-wrap").removeClass("search-wrap-active").addClass("search-wrap");
-		$(this).animate({'width':'250px',},"slow").removeClass("input-search-active").addClass("input-search");
+		$(this).removeClass("input-search-active").addClass("input-search");
+		//$(this).animate({'width':'250px',},"slow").removeClass("input-search-active").addClass("input-search");
 		if ($(this).val()=="") { $(this).val("Поиск по всем товарам..."); }
 	});
 });

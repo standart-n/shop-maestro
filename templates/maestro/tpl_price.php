@@ -3,6 +3,62 @@
 function line($q,$r) { $u=$q->url; $s=""; $i=0;
 	$s.='<tr valign="top">';
 	$id=intval($q->fn->toUTF($r->PART_ID));
+	foreach (array("SNAME","EXISTS","BUY","PRICE") as $key) { $i++;
+		switch ($key) {
+			case "SNAME": 
+				$a=$q->fn->toUTF($r->SNAME);
+				$a=$this->label("name",$a); $align="left"; 
+			break;
+			case "EXISTS": 
+				if ($r->REALQUANT>0) {
+					//$a=$this->label("country","есть");
+					$a='<div class="price-exists-true"></div>';
+				} else {
+					$a='<div class="price-exists-false"></div>';
+					//$a=$this->label("country","нет");
+				}
+				$align="center"; 
+			break;
+			case "BUY": 
+				$a="Купить"; $align="right"; 
+			break;
+			case "PRICE": 
+				$a=$q->fn->toUTF($r->PRICE);
+				$a=$this->label("price",$a); $align="right"; 
+			break;
+			default: $align="left";
+		}
+		switch ($key) {
+			case "SNAME": 
+				$s.='<td class="table-price-link" align="'.$align.'">';
+				$s.='<a ';
+				$s.='href="';
+				$s.=	$q->fn->getUrlPrice($u->site,"price",$u->page,$u->group,$u->portion,$u->first,$u->search,'line',$id,$u->sort,$u->grad,$u->presence);
+				$s.='">';
+				if ($q->url->id==$id) { $s.='<b>'.$a.'</b>'; } else { $s.=$a; }				
+				$s.='</a></td>'; 
+			break;
+			case "BUY":
+				$s.='<td class="table-price-link" align="'.$align.'">';
+				$s.='<a class="price-icon-buy" ';
+				$s.='href="';
+				$s.=	$q->fn->getUrlPrice($u->site,"price",$u->page,$u->group,$u->portion,$u->first,$u->search,'line',$id,$u->sort,$u->grad,$u->presence);
+				$s.='">';
+				//if ($q->url->id==$id) { $s.='<b>'.$a.'</b>'; } else { $s.=$a; }
+				$s.='</a></td>'; 
+			break;
+			default: $s.='<td class="table-price-line" align="'.$align.'">'.$a.'</td>';
+		}
+	}
+	$s.='</tr>';	
+	return $s;
+}
+
+
+/*
+function line($q,$r) { $u=$q->url; $s=""; $i=0;
+	$s.='<tr valign="top">';
+	$id=intval($q->fn->toUTF($r->PART_ID));
 	foreach (array("SNAME","SCOUNTRY","SERIA","PRICE") as $key) { $i++;
 		$a=$q->fn->toUTF($r->$key);
 		switch ($key) {
@@ -28,6 +84,7 @@ function line($q,$r) { $u=$q->url; $s=""; $i=0;
 	$s.='</tr>';	
 	return $s;
 }
+*/
 
 function portion($q) { $u=$q->url; $s="";
 	$s.='<div id="portion">';
@@ -215,14 +272,16 @@ function label($type="name",$a="",$cl="field") { $s=$a;
 function tableHead($q) { $s="";
 	$s.='<table align="center" cellpadding="0" cellspacing="2" border="0" width="100%">';
 	$s.='<tr valign="top">';
-		$s.='<td id="th-SNAME" class="table-price-caption" width="500px" align="left">';
+		$s.='<td id="th-SNAME" class="table-price-caption" width="650px" align="left">';
 		$s.=$this->linkForSort($q,"SNAME","Наименование");
 		$s.='</td>';
-		$s.='<td id="th-SCOUNTRY" class="table-price-caption" width="100px" align="center">';
-		$s.=$this->linkForSort($q,"SCOUNTRY","Страна");
+		$s.='<td id="th-SCOUNTRY" class="table-price-caption" width="50px" align="center">';
+		$s.='<span class="table-price-exists">Наличие</span>';
+		//$s.=$this->linkForSort($q,"SCOUNTRY","Страна");
 		$s.='</td>';
-		$s.='<td id="th-SERIA" class="table-price-caption" width="150px" align="right">';
-		$s.=$this->linkForSort($q,"SERIA","Артикул");
+		$s.='<td id="th-SERIA" class="table-price-caption" width="50px" align="right">';
+		//$s.="Купить";
+		//$s.=$this->linkForSort($q,"SERIA","Артикул");
 		$s.='</td>';
 		$s.='<td id="th-PRICE" class="table-price-caption" width="100px" align="right">';
 		$s.=$this->linkForSort($q,"PRICE","Цена");

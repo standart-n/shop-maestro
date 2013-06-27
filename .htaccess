@@ -8,8 +8,8 @@ php_value memory_limit 32M
 
 Options FollowSymLinks
 RewriteEngine on
-RewriteCond %{HTTP_HOST} ^maestro18
-RewriteRule ^maestro18(.*)$ http://www.maestro18.ru/$1 [NC,R=301,L]
+RewriteCond %{HTTP_HOST} ^xn--18-6kc1cllgi1h.xn--p1ai
+RewriteRule ^xn--18-6kc1cllgi1h.xn--p1ai(.*)$ http://www.xn--18-6kc1cllgi1h.xn--p1ai/$1 [NC,R=301,L]
 
 RewriteBase  /maestro/ 
 RewriteRule ^.htaccess$ - [F] 
