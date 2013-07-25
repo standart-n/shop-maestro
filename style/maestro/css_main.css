@@ -17,6 +17,11 @@ height:1px;
 clear:both;
 }
 
+#underconstruction {
+	display: block;
+	float: left;
+}
+
 td.table-price-caption a:hover{
 color:#036;
 }
