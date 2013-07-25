@@ -11,7 +11,7 @@ function engine(&$q) {
 }
 
 function enter(&$q) { $j=&$q->json; $u=&$q->url; $check=false; $e="";
-	if ($q->referer=="http://".$u->site."/type:user/page:enter") {
+	//if ($q->referer=="http://".$u->site."/type:user/page:enter") {
 		if (!isset($q->user->id)) { $e="Не найден ID пользователя"; } else {
 			if ((!isset($u->email)) || (!isset($u->password))) { $e="Не найдены введенные данные"; } else {
 				if (($u->email=="") || ($u->password=="")) { $e="Вы не заполнили логин или пароль"; } else {
@@ -21,7 +21,7 @@ function enter(&$q) { $j=&$q->json; $u=&$q->url; $check=false; $e="";
 				}				
 			}
 		}	
-	}
+	//}
 	if ($check) { $j["check"]="TRUE"; } else { $j["check"]="FALSE"; }
 	$j["e"]=$e;
 }

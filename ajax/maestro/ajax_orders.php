@@ -65,7 +65,7 @@ function send(&$q) { $s=""; $e=""; $eL=""; $bar=""; $eT=""; $reg=""; $pwd=""; $j
 }
 
 function check(&$q) { $s=""; $e=""; $eT="red"; $j=&$q->json; $u=&$q->url; $check=false;
-	if ($q->referer=="http://".$q->url->site."/type:order/page:mount") {		
+	//if ($q->referer=="http://".$q->url->site."/type:order/page:mount") {		
 		if ((isset($u->key)) && (isset($u->value))) {
 			if ($u->key!="") {
 				switch($u->key) {
@@ -99,21 +99,21 @@ function check(&$q) { $s=""; $e=""; $eT="red"; $j=&$q->json; $u=&$q->url; $check
 		if ($check) { $j['check']="TRUE"; } else { $j['check']="FALSE"; }
 		$j['e']=$e;
 		$j['eT']=$eT;
-	}
+	//}
 }
 
 function checkComment(&$q) { $s=""; $e=""; $j=&$q->json; $u=&$q->url; $check=false;
-	if ($q->referer=="http://".$q->url->site."/type:order/page:mount") {		
+	//if ($q->referer=="http://".$q->url->site."/type:order/page:mount") {		
 		if (isset($u->value)) {
 			$u->value=$q->validate->comment($u->value);	
 			$q->orders->addComment($q,$u->value);
 		}
 		//$j['e']=$e;
-	}
+	//}
 }
 
 function deleteLine(&$q) {  $s=""; $bar=""; $j=&$q->json; $u=&$q->url; 
-	if ($q->referer=="http://".$q->url->site."/type:order/page:basket") {		
+	//if ($q->referer=="http://".$q->url->site."/type:order/page:basket") {		
 		$errorType=0; $summ=0; $total=0; $count=0; $userId=0;
 		$id=$u->id;
 		if ($id>0) {
@@ -133,7 +133,7 @@ function deleteLine(&$q) {  $s=""; $bar=""; $j=&$q->json; $u=&$q->url;
 		$j['count']=$count;
 		$j['partId']=$partId;
 		$j['errorType']=$errorType;	
-	}
+	//}
 }
 
 function editQuant(&$q) {  $s=""; $j=&$q->json; $u=&$q->url; 

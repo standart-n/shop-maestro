@@ -90,13 +90,13 @@ function enterFormSubmit(){
 		var email=$("#users-enter-email").val();
 		var password=$("#users-enter-password").val();
 		$.ajax({
-			url:'http://www.maestro18.ru/type:user/act:enter/email:'+email+'/password:'+password,
+			url:'http://www.маэстро18.рф/type:user/act:enter/email:'+email+'/password:'+password,
 			type:'GET', dataType:'json',
 			success:function(s){ 
 				if (s.ans!=undefined) { alert(s.ans); }
 				if (s.check!=undefined) {
 					if (s.check=="TRUE") {
-						location.href="http://www.maestro18.ru";
+						location.href="http://www.маэстро18.рф";
 					}
 				}
 				if (s.e!=undefined) {
@@ -118,6 +118,7 @@ function searchFormSubmit(){
 		first:0,
 		search:$("#search-value").val(),
 		act:'search',
+		group:0,
 		id:0
 	});
 	return false;
@@ -145,7 +146,7 @@ function articleBtnAddLeave(){
 
 $(function(){
 	if (window!=top){
-		top.location.replace("http://www.maestro18.ru");
+		top.location.replace("http://www.маэстро18.рф");
 	}	
 });
 
@@ -213,7 +214,7 @@ $(function(){
 		var part=input.data("part");
 		var count=input.val();
 		$.ajax({
-			url:'http://www.maestro18.ru/type:order/act:editquant/id:'+part+'/count:'+count,
+			url:'http://www.маэстро18.рф/type:order/act:editquant/id:'+part+'/count:'+count,
 			type:'GET', dataType:'json',
 			success:function(s){ 
 				if (s.ans!=undefined) { alert(s.ans); }
@@ -244,7 +245,7 @@ $(function(){
 		event.preventDefault();
 		var part=$(this).data("part");
 		$.ajax({
-			url:'http://www.maestro18.ru/type:order/act:delline/id:'+part,
+			url:'http://www.маэстро18.рф/type:order/act:delline/id:'+part,
 			type:'GET', dataType:'json',
 			success:function(s){
 				if (s.ans!=undefined) { alert(s.ans); }
@@ -285,7 +286,7 @@ $(function(){
 		var type=$(this).data("type");
 		var value=$(this).val();
 		$.ajax({
-			url:'http://www.maestro18.ru/type:order/act:check/key:'+type+'/value:'+value,
+			url:'http://www.маэстро18.рф/type:order/act:check/key:'+type+'/value:'+value,
 			type:'GET', dataType:'json',
 			success:function(s){
 				if (s.ans!=undefined) { alert(s.ans); }
@@ -316,7 +317,7 @@ $(function(){
 	$(".orders-mount-area textarea").on("blur",function(event){
 		var value=$(this).val();
 		$.ajax({
-			url:'http://www.maestro18.ru/type:order/act:checkComment/value:'+value,
+			url:'http://www.маэстро18.рф/type:order/act:checkComment/value:'+value,
 			type:'GET', dataType:'json',
 			success:function(s){
 				if (s.ans!=undefined) { alert(s.ans); }
@@ -334,7 +335,7 @@ $(function(){
 		var phone=$("[data-type=phone]").val();
 		var email=$("[data-type=email]").val();
 		$.ajax({
-			url:'http://www.maestro18.ru/type:order/act:send/firstname:'+firstname+'/lastname:'+lastname+'/phone:'+phone+'/email:'+email+'',
+			url:'http://www.маэстро18.рф/type:order/act:send/firstname:'+firstname+'/lastname:'+lastname+'/phone:'+phone+'/email:'+email+'',
 			type:'GET', dataType:'json',
 			success:function(s){ 
 				if (s.ans!=undefined) { alert(s.ans); }

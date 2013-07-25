@@ -4,6 +4,11 @@ function article($q,$r,$img) { $u=$q->url; $s="";
 	foreach (array("SNAME","SERIA","SCOUNTRY","PRICE","REALQUANT") as $key) { 
 		$k=strtolower($key); $$k=$q->fn->toUTF($r->$key);
 	}
+	if ($realquant > 0) {
+		$quant = 'есть';
+	} else {
+		$quant = 'мало';
+	}
 	$s.='<div id="article">';
 	$s.='	<div id="article-left">';
 	$s.='		<div id="article-image">';
@@ -29,8 +34,8 @@ function article($q,$r,$img) { $u=$q->url; $s="";
 	$s.='		<div id="article-price">';
 	$s.='		<span class="label-var">Количество:</span>';
 	$s.='		<input id="article-quant-need" name="article-quant-need" class="input-count" type="text" value="1" maxlength="40">';
-	$s.='		<span class="label-lquant">В наличии:</span>';
-	$s.='		'.$q->tpl_price->label("quant",$realquant,'label');
+	$s.='		<span class="label-lquant">Наличие:</span>';
+	$s.='		'.$q->tpl_price->label("quant",$quant,'label');
 	$s.='		<span class="label-cenn">Цена:</span>';
 	$s.='		'.$q->tpl_price->label("price",$price,'label');
 	$s.='		</div>';
