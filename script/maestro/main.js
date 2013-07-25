@@ -28,6 +28,7 @@ function getUrlPrice(u){
 }
 
 var sendAjax=function(title,href,e){
+	return;
 	if (browser()!="IE") {
 		if (history!=undefined) {
 			history.replaceState({page:href},title,href);
