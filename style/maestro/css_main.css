@@ -330,6 +330,14 @@ height: 16px;
 background: url('../../img/maestro/cart.png') no-repeat center;
 }	
 
+.price-icon-image {
+display: block;
+float: left;
+width: 48px;
+height: 16px;
+background: url('../../img/maestro/image.png') no-repeat center;
+}	
+
 .price-exists-true {
 display: block;
 float: left;

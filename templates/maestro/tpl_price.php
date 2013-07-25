@@ -3,11 +3,18 @@
 function line($q,$r) { $u=$q->url; $s=""; $i=0;
 	$s.='<tr valign="top">';
 	$id=intval($q->fn->toUTF($r->PART_ID));
-	foreach (array("SNAME","EXISTS","BUY","PRICE") as $key) { $i++;
+	foreach (array("SNAME","PHOTO","EXISTS","BUY","PRICE") as $key) { $i++;
 		switch ($key) {
 			case "SNAME": 
 				$a=$q->fn->toUTF($r->SNAME);
 				$a=$this->label("name",$a); $align="left"; 
+			break;
+			case "PHOTO":
+				$a='';
+				$img=$q->fn->getImage($r);
+				if ($img !== '') {
+					$a.='<div class="price-icon-image"></div>';
+				}
 			break;
 			case "EXISTS": 
 				if ($r->REALQUANT>0) {
@@ -272,12 +279,14 @@ function label($type="name",$a="",$cl="field") { $s=$a;
 function tableHead($q) { $s="";
 	$s.='<table align="center" cellpadding="0" cellspacing="2" border="0" width="100%">';
 	$s.='<tr valign="top">';
-		$s.='<td id="th-SNAME" class="table-price-caption" width="650px" align="left">';
+		$s.='<td id="th-SNAME" class="table-price-caption" width="600px" align="left">';
 		$s.=$this->linkForSort($q,"SNAME","Наименование");
 		$s.='</td>';
 		$s.='<td id="th-SCOUNTRY" class="table-price-caption" width="50px" align="center">';
 		$s.='<span class="table-price-exists">Наличие</span>';
 		//$s.=$this->linkForSort($q,"SCOUNTRY","Страна");
+		$s.='</td>';
+		$s.='<td id="th-SERIA" class="table-price-caption" width="50px" align="right">';
 		$s.='</td>';
 		$s.='<td id="th-SERIA" class="table-price-caption" width="50px" align="right">';
 		//$s.="Купить";
