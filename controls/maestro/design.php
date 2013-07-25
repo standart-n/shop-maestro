@@ -33,7 +33,7 @@ function toolbar(&$q) { $s="";
 }
 
 function icons(&$q) { $s="";
-	$s.=$q->tpl_design->icons($q);
+	//$s.=$q->tpl_design->icons($q);
 	return $s;
 }
 
