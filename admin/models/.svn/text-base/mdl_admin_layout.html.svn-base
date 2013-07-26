@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+[html.>]
+<head>
+[head.>]
+
+<title>[title.>][title.<]</title>
+
+[meta.>]
+<meta http-equiv="Content-Language" content="ru" />
+<meta name="robots" content="all" />
+<meta name="Copyright" Lang="ru" content="2010-2011 standart-n.ru">
+<meta name="Document-state" content="Dynamic">
+<meta name="Revesit" content="3">
+
+<meta name="Keywords" content="Стандарт-Н, Dement, CMS"/>
+<meta name="Description" content="НВП Стандарт-Н :: Система Управления Сайтом Dement"/>
+<meta name="НВП Стандарт-Н :: Система Управления Сайтом Dement"/>
+[meta.<]
+
+[favicon.>]
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+[favicon.<]
+
+[style.>]
+<link href="style/css_main.css" rel="stylesheet" type="text/css">
+<link href="style/css_icons.css" rel="stylesheet" type="text/css">
+<link href="style/css_theme.css" rel="stylesheet" type="text/css">
+<link href="style/css_mdl.css" rel="stylesheet" type="text/css">
+<link href="style/css_menu.css" rel="stylesheet" type="text/css">
+<link href="style/css_panel.css" rel="stylesheet" type="text/css">
+[style.<]
+
+[js.>]
+<script src="../lib/_js/De_admin.js" type="text/javascript"></script>
+<script src="script/js_events.js" type="text/javascript"></script>
+<script src="script/js_menu.js" type="text/javascript"></script>
+[js.<]
+
+[head.<]
+</head>
+
+<body MARGINWIDTH="0" MARGINHEIGHT="0" bottommargin="0" topmargin="0" leftmargin="0" rightmargin="0">
+[body.>]
+
+<div id="idCenterDiv">
+	<div id="idGlobalDiv">
+		<div id="idMainDiv">
+		[main.>]
+
+		<div class="clHeaderLine">
+		[header.>]
+			<span class="clBlueLink">
+				<a href="index.php" title="Главная">Главная</a>
+				<a href="../index.php" target="_blank" title="Перейти на сайт">На сайт</a>
+				<a href="index.php?action=exit" title="Выйти из системы">Выход</a>
+			</span>
+			<span class="clTitleText">[project.>][project.<]</span>
+		[header.<]
+		</div>
+	
+		[menu.>]
+		[menu.<]
+		
+		<div id="idContentDiv">		
+		[content.>]
+			
+	
+		[content.<]
+		</div>	
+			
+	
+		<div class="clCopyrightDiv">
+		[footer.>]
+			<table align="center" width="800px"><tr><td align="center"><div class="clCopyrightText">
+				[copyright.>]
+				<a target="_blank" href="http://www.standart-n.ru" title="Разработка программного обеспечения, автоматизация розничной торговли">
+					© 2010-2011 standart-n.ru
+				</a>
+				[copyright.<]
+				</div></td></tr>
+			</table>
+		[footer.<]
+		</div>
+
+		<div id="idBottomDiv">
+		[bottom.>]
+		[bottom.<]
+		</div>
+		
+		[main.<]
+		</div>
+	</div>
+</div>
+
+[body.<]
+</body>
+[html.<]
+</html>

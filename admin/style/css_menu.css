@@ -1,0 +1,95 @@
+	#idMenuDiv {
+	display:block;
+	float:left;
+	width:813px;
+	padding:0 0 0 10px;
+	margin:10px 0 0 0;
+	height:40px;
+    background:url(../img/upline.png) no-repeat left top;
+	}	
+
+	.clMenuLine {
+	display:block;
+	float:left;
+	width:160px;
+	height:auto;
+	}
+
+	.clMenuHeader a:link {
+	width:160px;
+    color: #ffffff;
+	text-decoration:none;
+	outline:none;
+	}
+
+	.clMenuHeader a:visited {
+	width:160px;
+    color: #ffffff;
+	text-decoration:none;
+	}
+
+	.clMenuHeader a:hover {
+	width:160px;
+    color: #cccccc;
+	text-decoration:none;
+	}
+
+	.clMenuHeader a {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+	display:block;
+	float:left;
+	width:160px;
+	height:auto;
+	padding:10px 0 10px 0;
+	color: #ffffff;
+	text-align:center;
+	outline:none;
+	}
+
+
+
+    .clMenuSide {
+    position:relative;
+    display:block;
+    float:left;
+    width:158px;
+    height:auto;
+    background:#f7f7f7;
+    border:#333333 solid 1px;
+    z-index:10;
+    }
+    
+
+	.clMenuSide a:link {
+	width:158px;
+    color: #000000;
+	text-decoration:none;
+	outline:none;
+	}
+
+	.clMenuSide a:visited {
+	width:158px;
+    color: #000000;
+	text-decoration:none;
+	}
+
+	.clMenuSide a:hover {
+	width:158px;
+    color: #666666;
+	text-decoration:none;
+	}
+
+	.clMenuSide a {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+	display:block;
+	float:left;
+	width:148px;
+	line-height:30px;
+	padding:0 0 0 10px;
+    color: #000000;
+	text-align:left;
+    background:url(../img/panel.png) no-repeat left top;
+	outline:none;
+	}

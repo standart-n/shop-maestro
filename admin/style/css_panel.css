@@ -1,0 +1,73 @@
+	
+	
+	#idmain_ul {
+    list-style: none;
+    width:810px;
+    height:auto;
+    padding:0;
+    margin:10px 0 0 0;
+    border:#cccccc solid 1px;
+	}
+
+	#idmain_ul li {
+    line-height:30px;
+    padding:0 10px 0 10px;
+    margin:0;
+    background: url(../img/bg_blue.png) repeat-x left top;
+	}
+
+	#idsub_ul {
+    list-style: none;
+    width:810px;
+    height:auto;
+    padding:0;
+    margin:10px 0 0 0;
+    border:#cccccc solid 1px;
+	}
+
+	#idsub_ul li {
+    line-height:30px;
+    padding:0 10px 0 10px;
+    margin:0;
+    background: url(../img/bg_blue.png) repeat-x left top;
+	}
+	
+    .clTblBox{
+    display:block;
+    float:left;
+    clear:both;
+    height:auto;
+    }
+
+
+	.clPanelLink {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+    color: #999999;
+	text-decoration:none;
+	}
+
+	.clPanelLink a:link {
+    color: #003366;
+	text-decoration:none;
+	outline:none;
+	}
+
+	.clPanelLink a:visited {
+    color: #003366;
+	text-decoration:none;
+	}
+
+	.clPanelLink a:hover {
+    color: #333333;
+	text-decoration:none;
+	}
+	
+	.clPanelLink a {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+    color: #003366;
+	text-decoration:none;
+	outline:none;
+	}
+

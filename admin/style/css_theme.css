@@ -1,0 +1,204 @@
+	.clSomeText {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+    color:#222222;
+	margin: 0 0 0 0;
+	}
+
+	.clCaptionText {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+    font-weight:bold;
+    display:block;
+    float:left;
+    width:600px;
+	height:auto;
+	margin: 10px 0 0 5px;
+    color:#003366;
+	clear:both;
+	}
+
+	.clDescriptionText {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+    display:block;
+    float:left;
+    width:600px;
+	height:auto;
+	margin: 5px 0 0 0;
+    padding:0 5px 20px 5px;
+    color:#000000;
+	clear:both;
+	}
+
+	.clLabelText {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color:#003366;
+	font-size: 12px;
+	text-decoration:none;
+	}
+
+	.clOperationText {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color:#3d5179;
+	}
+
+	.clStatFieldText {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color:#408334;
+	}
+
+	.clHeaderLine{
+	display:block;
+	float:left;
+	width:813px;
+	height:auto;
+	padding:5px;
+    color:#000000;
+	margin: 0 0 0 0;
+	}		
+	
+	.clTextLine{
+	display:block;
+	float:left;
+	width:813px;
+	height:auto;
+	padding:0 5px 5px 5px; 
+    color:#000000;
+	margin: 5px 0 10px 0;
+	}		
+
+	#idTblOptions {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	}
+
+	#idTblEnter {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	}
+
+	#idMonitor{
+	display:block;
+	float:left;
+	width:808px;
+	height:250px;
+	padding:5px;
+	overflow:scroll;
+	margin: 0 0 5px 0;
+	background:#ffffff;
+	border:#cccccc dashed 1px;
+	}		
+
+	#idTextArea{
+	display:block;
+	float:left;
+	width:798px;
+	height:auto;
+	padding:5px;
+	margin: 0 0 5px 0;
+	background:#ffffff;
+	}		
+
+	.clButtonLine{
+	display:block;
+	float:left;
+	width:825px;
+	height:auto;
+	margin: 10px 0 10px 0;
+    clear:both;
+    background:#ffffff;
+	}		
+
+	.clButtonLine a:link {
+	width:120px;
+    color: #000000;
+	text-decoration:none;
+	outline:none;
+	}
+
+	.clButtonLine a:visited {
+	width:120px;
+    color: #000000;
+	text-decoration:none;
+	outline:none;
+	}
+
+	.clButtonLine a:hover {
+	width:120px;
+    color: #666666;
+	text-decoration:none;
+	outline:none;
+	}
+
+	.clButtonLine a {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+	display:block;
+	float:left;
+	width:120px;
+    color: #000000;
+	text-align:left;
+	outline:none;
+	}
+
+	.clButtonLine a img {
+    border:none;
+	outline:none;
+	}
+    
+    .clBtnLink img{
+    display:block;
+    float:left;
+    margin:0 5px 0 5px;
+    }
+
+        
+    .clTextLine textarea {
+    width:798px;
+    }
+
+    .clIcons{
+    border:none;
+    outline:none;
+    }
+
+	.clTextList {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+    color: #222222;
+	text-decoration:none;
+	}
+
+	.clLinkList {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+    color: #999999;
+	text-decoration:none;
+	}
+
+	.clLinkList a:link {
+    color: #003366;
+	text-decoration:none;
+	outline:none;
+	}
+
+	.clLinkList a:visited {
+    color: #003366;
+	text-decoration:none;
+	}
+
+	.clLinkList a:hover {
+    color: #003366;
+	text-decoration:underline;
+	}
+	
+	.clLinkList a {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+    color: #003366;
+	text-decoration:none;
+	outline:none;
+	}

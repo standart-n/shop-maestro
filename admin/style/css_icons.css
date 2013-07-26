@@ -1,0 +1,101 @@
+    .clGroupLine{
+    display:block;
+    line-height:20px;
+    margin:10px 0 0 10px;
+    width:800px;
+    float:left;
+    clear:both;
+    /*border-top:#999999 solid 1px;*/
+    border-bottom:#dddddd solid 1px;
+    /*background:#cccccc;*/
+    }
+
+    .clGroupName{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+    font-weight:bold;
+    color: #999999;
+    display:block;
+    float:left;
+    }
+	
+    .clGroupBox{
+    display:block;
+    float:left;
+    margin:10px 0 0 0;
+    width:825px;
+    }
+	
+    .clModuleBox{
+    display:block;
+    float:left;
+    width:130px;
+    margin:3px;
+    background:#ffffff;
+    }
+
+    .clModuleIcon{
+    display: block;
+    float:left;
+    width:50px;
+    border:none;
+    outline:none;
+    }
+
+    .clModuleIcon img{
+    border:none;
+    outline:none;
+    }
+
+    .clModuleContent{
+    display: block;
+    float:left;
+    width:80px;
+    }
+	
+    .clModuleName {
+    display: block;
+    float:left;
+    width:80px;
+    }
+    
+    
+    .clModuleName a:link{
+    color:#000000;
+    width:80px;
+    outline:none;
+    text-decoration:none;
+    }
+
+    .clModuleName a:visited{
+    color:#000000;
+    width:80px;
+    outline:none;
+    text-decoration:none;
+    }
+
+    .clModuleName a:hover{
+    color:#333333;
+    width:80px;
+    outline:none;
+    text-decoration:none;
+    }
+
+    .clModuleName a{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+    font-weight:bold;
+    color:#000000;
+    width:80px;
+    outline:none;
+    text-decoration:none;
+    }
+
+    .clModuleCaption{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+    color:#666666;
+    display: block;
+    float:left;
+    width:80px;
+    }

@@ -1,0 +1,40 @@
+
+	input.dialog_input {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+    color: #111111;
+	margin:2px;
+	}
+
+	select.dialog_input {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+    color: #111111;
+	margin:2px;
+	}
+
+	textarea.option_input {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+    color: #000000;
+	margin:0;
+	}
+
+	input.option_input {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+    color: #000000;
+	margin:2px;
+    width:400px;
+	}
+
+	select.option_input {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+    color: #000000;
+	margin:2px;
+	}
+
+	select.option_input option{
+	outline:none;
+	}

@@ -1,0 +1,38 @@
+	#idEditor {
+	display:block;
+	float:left;
+	}
+
+	#idBoxText {
+	display:none;
+	float:left;
+	}
+
+	#idBoxCSS {
+	display:none;
+	float:left;
+	}
+
+	#idBoxEl {
+	display:none;
+	float:left;
+	}
+
+	#idElButtons {
+	display:none;
+	float:left;
+	}
+
+	#idBoxButtons {
+	display:none;
+	float:left;
+	}
+
+	#idCSSButtons {
+	display:none;
+	float:left;
+	}
+
+	#idTblPhotos {
+	border:#cccccc solid 2px;
+	}
