@@ -13,7 +13,9 @@ function line($q,$r) { $u=$q->url; $s=""; $i=0;
 				$a='';
 				$img=$q->fn->getImage($r);
 				if ($img !== '') {
-					$a.='<div class="price-icon-image"></div>';
+					$hash=md5($img);
+					$a.='<div class="price-icon-image" data-image="'.$hash.'"></div>';
+					$a.='<div class="price-image-preview" data-preview="'.$hash.'"><img width="100px" src="'.$img.'"></div>';
 				}
 			break;
 			case "EXISTS": 

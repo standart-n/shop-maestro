@@ -328,6 +328,35 @@ $(function(){
 });
 
 $(function(){
+	$(document).on('mouseover','.price-icon-image',function(e){
+		_this = this;
+		$('.price-image-preview').each(function(){
+			if ($(this).data('preview') == $(_this).data('image')) {
+				$(this).css({
+					'top': (e.pageY + 10),
+					'left': (e.pageX - 50)
+				});
+				$(this).show();
+			}
+		});
+	});
+
+});
+
+$(function(){
+	$(document).on('mouseleave','.price-icon-image',function(e){
+		_this = this;
+		$('.price-image-preview').each(function(){
+			if ($(this).data('preview') == $(_this).data('image')) {
+				$(this).hide();
+			}
+		});
+	});
+
+});
+
+
+$(function(){
 	$(".orders-link-send").on("click",function(event){
 		event.preventDefault();
 		var firstname=$("[data-type=firstname]").val();

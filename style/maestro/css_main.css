@@ -322,6 +322,14 @@ text-decoration:none;
 outline:none;
 }
 
+.price-image-preview {
+position: absolute;
+display: none;
+float: left;
+z-index:1000;
+border: #ccc solid 1px;
+}
+
 .price-icon-buy {
 display: block;
 float: left;

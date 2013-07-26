@@ -23,7 +23,7 @@ function engine(&$q) {
 }
 
 function send(&$q) { $s=""; $e=""; $eL=""; $bar=""; $eT=""; $reg=""; $pwd=""; $j=&$q->json; $u=&$q->url; $check=true;
-	if ($q->referer=="http://".$q->url->site."/type:order/page:mount") {
+	//if ($q->referer=="http://".$q->url->site."/type:order/page:mount") {
 		if (!isset($q->user->id)) { $e="Пользователь не определен"; $check=false; } else {
 			if (!isset($q->user->order->id)) { $e="Информация о Вашем заказе не найдена"; $check=false; } else {
 				if ($q->orders->getOrderDetailCount($q)<1) { $e="Ваша корзина пуста"; $check=false; } else {
@@ -61,7 +61,7 @@ function send(&$q) { $s=""; $e=""; $eL=""; $bar=""; $eT=""; $reg=""; $pwd=""; $j
 		$j['eT']=$eT;
 		$j['bar']=$bar;
 		$j['reg']=$reg;
-	}
+	//}
 }
 
 function check(&$q) { $s=""; $e=""; $eT="red"; $j=&$q->json; $u=&$q->url; $check=false;
