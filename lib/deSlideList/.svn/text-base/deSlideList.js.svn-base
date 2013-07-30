@@ -1,0 +1,71 @@
+/*standart-n*/
+var slideList=jQuery.Class.create({		
+init: function(de){ $(document).ready(function(){ 
+	list=0; slideList_init(); slideList_css(); slideList_size();
+});
+$('#'+de.divId+'Dots a').live("click", function(){ de.flag="TRUE"; str=this.id; id=str.split("_"); list=id[id.length-1]; checkList(list); });
+function slideList_size(){ deWidth=0; deHeight=0; maxList=0;
+	$('#'+de.ulId).find('li').each(function(){ deWidth+=($(this).width()); deHeight+=($(this).height()); maxList++; }); 
+	if (de.type=="h") {
+		$('#'+de.ulId).css({'width':deWidth+'px'}); 
+		$('#'+de.divId).scrollLeft(0);
+	}
+	if (de.type=="v") {
+		$('#'+de.ulId).css({'height':deHeight+'px'}); 
+		$('#'+de.divId).scrollTop(0);
+	}
+}
+$('#'+de.boxId).live("mousemove",function(e){
+	if (de.type=="h") {
+		de.boxWidth=intval($('#'+de.boxId).width());
+		de.divWidth=intval($('#'+de.divId).width());
+		de.ulWidth=intval($('#'+de.ulId).width());
+		de.offsetLeft=intval($('#'+de.divId).offset().left);
+		left=intval((e.pageX-de.offsetLeft)*(de.ulWidth-de.boxWidth)/(de.boxWidth));
+		$('#'+de.divId).scrollLeft(left);
+	}
+	if (de.type=="v") {
+		de.boxHeight=intval($('#'+de.boxId).height());
+		de.divHeight=intval($('#'+de.divId).height());
+		de.ulHeight=intval($('#'+de.ulId).height());
+		de.offsetTop=intval($('#'+de.divId).offset().top);
+		top=intval((e.pageY-de.offsetTop)*(de.ulHeight-de.boxHeight)/(de.boxHeight));
+		$('#'+de.divId).scrollTop(top);
+	}
+});
+ 
+function slideList_css(){
+	$('#'+de.boxId).css({'display':'block'});				 			
+	$('#'+de.boxId).css({'float':'left'});				 			
+	$('#'+de.boxId).css({'width':de.slideWidth+'px'});				 			
+	$('#'+de.boxId).css({'height':de.slideHeight+'px'});				 			
+	$('#'+de.boxId).css({'border':de.border});				 			
+	$('#'+de.boxId).css({'background':de.background});				 			
+	$('#'+de.divId).css({'display':'block'});				 			
+	$('#'+de.divId).css({'float':'left'});				 			
+	$('#'+de.divId).css({'width':de.slideWidth+'px'});				 			
+	$('#'+de.divId).css({'height':de.slideHeight+'px'});				 			
+	$('#'+de.divId).css({'overflow':'hidden'});				 			
+	$('#'+de.ulId).css({'display':'block'});				 			
+	$('#'+de.ulId).css({'float':'left'});				 			
+	$('#'+de.ulId).css({'padding':'0'});				 			
+	$('#'+de.ulId).css({'margin':'0'});				 			
+	$('#'+de.ulId).css({'list-style':'none'});				 			
+	$('#'+de.ulId+' li').css({'display':'block'});				 			
+	$('#'+de.ulId+' li').css({'float':'left'});				 			
+	$('#'+de.ulId+' li').css({'padding':'0'});				 			
+	$('#'+de.ulId+' li').css({'margin':'0'});				 			
+	$('#'+de.ulId+' li').css({'border':'none'});				 			
+}
+function slideList_init(){
+    if (de.boxId==undefined) {de.boxId="box_slidelist";}
+    if (de.divId==undefined) {de.divId="div_slidelist";}
+    if (de.ulId==undefined) {de.ulId="ul_slidelist";}
+    if (de.type==undefined) {de.type="v";}
+    if (de.slideWidth==undefined) {de.slideWidth="640";}
+    if (de.slideHeight==undefined) {de.slideHeight="480";}
+    if (de.border==undefined) {de.border="none";}
+    if (de.background==undefined) {de.background="none";}
+}												
+return "Dement.ru";	}
+});

@@ -1,0 +1,136 @@
+/*standart-n*/
+var slideImg=jQuery.Class.create({		
+init: function(de){ $(document).ready(function(){ 
+	list=0; inc=1; slideImg_init(); slideImg_html(); slideImg_css(); slideImg_width(); slideImg_dots(); checkLinks(); list=-1; slideShow(); 
+});
+slideShow=function() { if (de.flag=="FALSE") { list+=inc; checkList(list); setTimeout("slideShow();",de.delay); } }
+$('#'+de.boxId+'Left').live("click", function(){ if (list>0) { de.flag="TRUE"; list=list-1; checkList(list); } });
+$('#'+de.boxId+'Right').live("click", function(){ if ((list+1)<maxList) { de.flag="TRUE"; list++; checkList(list); } });
+$('#'+de.divId+'Dots a').live("click", function(){ de.flag="TRUE"; str=this.id; id=str.split("_"); list=id[id.length-1]; checkList(list); });
+function clearDots() { $('#'+de.divId+'Dots a').css({'background':de.dotBg}); }
+function slideImg_width(){ deWidth=0; maxList=0;
+	$('#'+de.ulId).find('li').each(function(){ deWidth+=($(this).width()); maxList++; }); 
+	$('#'+de.ulId).css({'width':deWidth+'px'}); $('#'+de.divId).scrollLeft(0);
+}
+function slideImg_html(){ code="";
+	code+='<a id="'+de.boxId+'Left" class="'+de.boxId+'Link" href="#de"></a>';
+	code+='<a id="'+de.boxId+'Right" class="'+de.boxId+'Link" href="#de"></a>';
+	document.getElementById(de.boxId).innerHTML+=code;
+}
+function checkLinks() { 
+	if (list<=0) { inc=1; $('#'+de.boxId+'Left').css({'background':'none'}); } else { $('#'+de.boxId+'Left').css({'background':de.leftBg}); }
+	if ((list+1)>=maxList) { inc=-1; $('#'+de.boxId+'Right').css({'background':'none'}); } else { $('#'+de.boxId+'Right').css({'background':de.rightBg}); }
+}
+function checkList(n_list) { clearDots(); checkLinks();
+	$('#'+de.divId).animate({scrollLeft:(n_list)*de.slideWidth},de.speed,de.linear,function(){/**/});
+	$('#'+de.divId+"_"+n_list).css({'background':de.dotBgAct});				 			
+}
+function slideImg_dots() { code='<div id="'+de.divId+'Dots"><div id="'+de.divId+'DotBox">';
+	for(i=0;i<maxList;i++) { code+='<a id="'+de.divId+"_"+i+'" href="#de"></a>'; } 
+	code+='</div></div>'; document.getElementById(de.boxId).innerHTML+=code;
+	$('#'+de.divId+'Dots').css({'position':'relative'});				 			
+	$('#'+de.divId+'Dots').css({'display':'block'});				 			
+	$('#'+de.divId+'Dots').css({'float':'left'});				 			
+	$('#'+de.divId+'Dots').css({'width':de.slideWidth+"px"});
+	$('#'+de.divId+'Dots').css({'height':'auto'});				 			
+	$('#'+de.divId+'Dots').css({'padding':'0 0 0 0'});				 			
+	$('#'+de.divId+'Dots').css({'margin':'0'});				 			
+	$('#'+de.divId+'Dots').css({'top':de.dotTop});				 			
+	$('#'+de.divId+'Dots').css({'left':de.dotLeft});				 			
+	$('#'+de.divId+'Dots').css({'z-index':'100'});				 			
+	$('#'+de.divId+'Dots').css({'text-align':de.dotAlign});				 			
+	$('#'+de.divId+'DotBox').css({'display':'block'});				 			
+	$('#'+de.divId+'DotBox').css({'float':'left'});				 			
+	$('#'+de.divId+'DotBox').css({'margin':de.dotMargin});				 			
+	$('#'+de.divId+'DotBox').css({'padding':'0'});				 			
+	$('#'+de.divId+'Dots a').css({'display':'block'});				 			
+	$('#'+de.divId+'Dots a').css({'float':'left'});				 			
+	$('#'+de.divId+'Dots a').css({'width':de.dotWidth+"px"});				 			
+	$('#'+de.divId+'Dots a').css({'height':de.dotHeight+"px"});				 			
+	$('#'+de.divId+'Dots a').css({'padding':de.dotPadding});				 			
+	$('#'+de.divId+'Dots a').css({'border':'none'});				 			
+	$('#'+de.divId+'Dots a').css({'outline':'none'});				 			
+	$('#'+de.divId+'Dots a').css({'background':de.dotBg});				 			
+	$('#'+de.divId+"_"+list).css({'background':de.dotBgAct});				 			
+}
+function slideImg_css(){
+	$('#'+de.boxId).css({'display':'block'});				 			
+	$('#'+de.boxId).css({'float':'left'});				 			
+	$('#'+de.boxId).css({'width':de.slideWidth+'px'});				 			
+	$('#'+de.boxId).css({'height':de.slideHeight+'px'});				 			
+	$('#'+de.boxId).css({'border':de.boxBorder});				 			
+	$('#'+de.boxId).css({'background':de.boxBg});				 			
+	$('#'+de.divId).css({'display':'block'});				 			
+	$('#'+de.divId).css({'float':'left'});				 			
+	$('#'+de.divId).css({'width':de.slideWidth+'px'});				 			
+	$('#'+de.divId).css({'height':de.slideHeight+'px'});				 			
+	$('#'+de.divId).css({'overflow':'hidden'});				 			
+	$('#'+de.ulId).css({'display':'block'});				 			
+	$('#'+de.ulId).css({'float':'left'});				 			
+	$('#'+de.ulId).css({'width':'3000px'});				 			
+	$('#'+de.ulId).css({'height':'auto'});				 			
+	$('#'+de.ulId).css({'padding':'0'});				 			
+	$('#'+de.ulId).css({'margin':'0'});				 			
+	$('#'+de.ulId).css({'list-style':'none'});				 			
+	$('#'+de.ulId+' li').css({'display':'block'});				 			
+	$('#'+de.ulId+' li').css({'float':'left'});				 			
+	$('#'+de.ulId+' li').css({'padding':'0'});				 			
+	$('#'+de.ulId+' li').css({'margin':'0'});				 			
+	$('#'+de.ulId+' li').css({'width':de.slideWidth+'px'});				 			
+	$('#'+de.ulId+' li').css({'height':de.slideHeight+'px'});				 			
+	$('#'+de.ulId+' li').css({'border':'none'});				 			
+	$('#'+de.ulId+' li a').css({'display':'block'});				 			
+	$('#'+de.ulId+' li a').css({'float':'left'});				 			
+	$('#'+de.ulId+' li a').css({'padding':'0'});				 			
+	$('#'+de.ulId+' li a').css({'margin':'0'});				 			
+	$('#'+de.ulId+' li a').css({'width':de.slideWidth+'px'});				 			
+	$('#'+de.ulId+' li a').css({'height':de.slideHeight+'px'});				 			
+	$('#'+de.ulId+' li a').css({'border':'none'});				 			
+	$('#'+de.ulId+' li a').css({'ouline':'none'});				 			
+	$('#'+de.ulId+' li a img').css({'border':'none'});				 			
+	$('#'+de.ulId+' li a img').css({'ouline':'none'});				 			
+	$('.'+de.boxId+'Link').css({'position':'relative'});				 			
+	$('.'+de.boxId+'Link').css({'top':de.linkTop});				 			
+	$('.'+de.boxId+'Link').css({'display':'block'});				 			
+	$('.'+de.boxId+'Link').css({'width':de.linkWidth});				 			
+	$('.'+de.boxId+'Link').css({'height':de.linkHeight});				 			
+	$('.'+de.boxId+'Link').css({'border':'none'});				 			
+	$('.'+de.boxId+'Link').css({'outline':'none'});				 			
+	$('.'+de.boxId+'Link').css({'z-index':de.linkZindex});				 			
+	$('#'+de.boxId+'Left').css({'float':de.leftFloat});				 			
+	$('#'+de.boxId+'Left').css({'background':de.leftBg});				 			
+	$('#'+de.boxId+'Right').css({'float':de.rightFloat});				 			
+	$('#'+de.boxId+'Right').css({'background':de.rightBg});				 			
+}
+function slideImg_init(){
+    if (de.flag==undefined) {de.flag="FALSE";}
+    if (de.boxId==undefined) {de.boxId="box_slideshow";}
+    if (de.divId==undefined) {de.divId="div_slideshow";}
+    if (de.ulId==undefined) {de.ulId="ul_slideshow";}
+    if (de.speed==undefined) {de.speed="150";}
+    if (de.delay==undefined) {de.delay="3000";}
+    if (de.linear==undefined) {de.linear="linear";}
+    if (de.boxBg==undefined) {de.boxBg="none";}
+    if (de.boxBorder==undefined) {de.boxBorder="none";}
+    if (de.slideWidth==undefined) {de.slideWidth="400";}
+    if (de.slideHeight==undefined) {de.slideHeight="200";}
+    if (de.linkTop==undefined) {de.linkTop="-"+(de.slideHeight/2)+"px";}
+    if (de.linkWidth==undefined) {de.linkWidth="32px";}
+    if (de.linkHeight==undefined) {de.linkHeight="32px";}
+    if (de.leftFloat==undefined) {de.leftFloat="left";}
+    if (de.rightFloat==undefined) {de.rightFloat="right";}
+    if (de.linkZindex==undefined) {de.linkZindex="100";}
+    if (de.leftBg==undefined) {de.leftBg="url(http://www.dement.ru/!lib/deSlideImg/img/left.png) no-repeat center";}
+    if (de.rightBg==undefined) {de.rightBg="url(http://www.dement.ru/!lib/deSlideImg/img/right.png) no-repeat center";}
+    if (de.dotTop==undefined) {de.dotTop="-60px";}
+    if (de.dotLeft==undefined) {de.dotLeft=(de.slideWidth/2)+"px";}
+    if (de.dotWidth==undefined) {de.dotWidth="16";}
+    if (de.dotHeight==undefined) {de.dotHeight="16";}
+    if (de.dotPadding==undefined) {de.dotPadding="0 5px 0 0";}
+    if (de.dotMargin==undefined) {de.dotMargin="0 0 0 -40px";}
+    if (de.dotBg==undefined) {de.dotBg='url(http://www.dement.ru/!lib/deSlideImg/img/dot.png) no-repeat center';}    
+    if (de.dotBgAct==undefined) {de.dotBgAct='url(http://www.dement.ru/!lib/deSlideImg/img/dot_act.png) no-repeat center';}    
+    if (de.dotAlign==undefined) {de.dotAlign="center";}
+}												
+return "Dement.ru";	}
+});

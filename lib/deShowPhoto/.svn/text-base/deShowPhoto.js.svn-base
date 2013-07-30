@@ -1,0 +1,133 @@
+/*standart-n.ru*/ 
+var showPhoto=jQuery.Class.create({		
+init:function(de){$(document).ready(function() { showPhoto_init(); showPhoto_search(); showPhoto_wrapper(); showPhoto_css();
+$('span.'+de.closeButton+' a').live("click", function(){
+	deShowEffect('#'+de.dialogId,de.effect,de.speed);
+	if (de.wallVisible=="TRUE") { deShowOpacitySlow('#'+de.wallId,de.wallOpacity,0,1); }
+	$('#'+de.dialogId+'Dement').animate({top:'1px'},de.speed,"linear",function(){ showPhoto_css(); });
+});
+$('a.'+de.closeClassLink).live("mouseover", function(){ deShowOpacitySlow('a.'+de.closeClassLink,100,60,100); });
+$('a.'+de.closeClassLink).live("mouseout", function(){ deShowOpacitySlow('a.'+de.closeClassLink,60,100,100); });
+$(de.area+" img").live(de.event,function(){ 
+	img_src=$(this).attr("src"); img_class=$(this).attr("class"); img_count=$(this).attr("de_showPhoto_count"); img_align="center";
+	showPhoto_insert(img_src,img_count);
+	$('#'+de.dialogId+'Dement').animate({top: '1px'},de.before,"linear",function(){ 
+		showPhoto_css();
+		showPhoto_position();
+		if (de.wallVisible=="TRUE") { deShowOpacitySlow('#'+de.wallId,0,de.wallOpacity,1); }
+		deShowEffect('#'+de.dialogId,de.effect,de.speed);
+	});
+});
+$("#"+de.contentId+" img").live("click",function(){
+	count_now=intval($(this).attr("de_showPhoto_count")); count_now++;
+	if (count_now>=showPhoto_search()) { count_now=0; }
+	src_new=$("[de_showPhoto_count="+count_now+"]").attr("src");
+	showPhoto_insert(src_new,count_now);
+});
+});
+function showPhoto_search() { count=0;
+	$(de.area).find('img').each(function(){ 
+		$(this).attr("de_showPhoto_count",count); count++;
+	});
+	return count;
+}
+function showPhoto_wrapper() {
+	de_code='<div id="'+de.dialogId+'Dement"></div><div id="'+de.wallId+'"></div><div id="'+de.dialogId+'">';			
+	if (de.closeVisible=="TRUE") { de_code+='<span class="'+de.closeButton+'"><a class="'+de.closeClassLink+'" href="#de"></a></span>'; }
+	de_code+='<div id="'+de.contentId+'"></div></div>';  													 
+	document.body.innerHTML+=de_code; 
+}
+function showPhoto_insert(de_src,de_count) {
+	de_code='<img src="'+de_src+'" align="center" de_showPhoto_count="'+de_count+'">';
+	$('#'+de.contentId).html(de_code);
+}
+function showPhoto_position() {
+	documentHeight=deGetDocumentSize().height; documentWidth=deGetDocumentSize().width;
+	screenHeight=deGetScreenSize().height; screenWidth=deGetScreenSize().width;
+	scrollTop=deGetScrollSize().top; scrollLeft=deGetScrollSize().left;
+    deMDialog=$('#'+de.dialogId);  deWall=$('#'+de.wallId); deMDialog.css({'display': 'none'}); deWall.css({'display': 'none'});		
+    deMDialogHeight=deMDialog.height(); deMDialogWidth=deMDialog.width();
+	deMDialogTop=(screenHeight-deMDialogHeight)/2+scrollTop; deMDialogLeft=(screenWidth-deMDialogWidth)/2+scrollLeft;
+    if (deMDialogTop>0) { 
+		if ((deMDialogHeight+deMDialogTop)<(documentHeight+100)) { deMDialog.css({'top': deMDialogTop}); } else { deMDialog.css({'top': '50px'}); }
+    } else { deMDialog.css({'top':'100px'}); }    
+    if (deMDialogLeft>0) {
+        if ((deMDialogWidth+deMDialogLeft)<(documentWidth+100)) { deMDialog.css({'left': deMDialogLeft}); } else { deMDialog.css({'left': '50px'}); }
+    } else { deMDialog.css({'left':'100px'}); }    
+	deWallHeight=screenHeight+scrollTop; deWallWidth=screenWidth+scrollLeft; deWall.width(documentWidth); deWall.height(documentHeight);			
+}
+function showPhoto_init() {
+    if (de.area==undefined) {de.area="#primary";}
+    if (de.event==undefined) {de.event="click";}
+    if (de.effect==undefined) {de.effect="OpacityEffect";}
+    if (de.before==undefined) {de.before="10";}
+    if (de.width==undefined) {de.width="auto";}
+    if (de.height==undefined) {de.height="auto";}
+    if (de.dialogBorder==undefined) {de.dialogBorder="#999999 solid 1px";}
+    if (de.dialogZindex==undefined) {de.dialogZindex="200";}
+    if (de.dialogOpacity==undefined) {de.dialogOpacity="95";}
+    if (de.speed==undefined) {de.speed="100";}
+    if (de.dialogId==undefined) {de.dialogId="dialog";}
+    if (de.contentBackground==undefined) {de.contentBackground="#ffffff";}
+    if (de.contentAlign==undefined) {de.contentAlign="center";}
+    if (de.contentId==undefined) {de.contentId=de.dialogId+'Content';}
+    if (de.wallBackground==undefined) {de.wallBackground="#000000";}
+    if (de.wallVisible==undefined) {de.wallVisible="TRUE";}
+    if (de.wallOpacity==undefined) {de.wallOpacity="50";}
+    if (de.wallId==undefined) {de.wallId=de.dialogId+'Wall';}
+    if (de.closeBackground==undefined) {de.closeBackground="url(http://www.dement.ru/!lib/deShowDialog/img/btnClose.png) no-repeat center";}
+    if (de.closeButton==undefined) {de.closeButton=de.dialogId+'Close';}
+    if (de.closeClassLink==undefined) {de.closeClass=de.dialogId+'LinkClose';}
+    if (de.closeVisible==undefined) {de.closeVisible='TRUE';}
+}
+function showPhoto_css() {
+	$('#'+de.dialogId).css({
+	'position':'absolute',
+	'display':'none',
+	'float':'left',
+	'top':'0',
+	'left':'0',
+	'width':de.width,
+	'height':'auto',
+	'border':de.dialogBorder,
+	'z-index':de.dialogZindex
+	});
+	$('#'+de.contentId).css({
+	'display':'block',
+	'float':'left',
+	'width':($('#'+de.dialogId).width()-20),
+	'height':de.height,
+	'padding':'10px',
+	'clear':'both',
+	'text-align':de.contentAlign,
+	'background':de.contentBackground
+	});
+	$('#'+de.wallId).css({
+	'position':'absolute',
+	'display':'none',
+	'float':'left',
+	'top':'0',
+	'left':'0',
+	'background':de.wallBackground,
+	'z-index':(de.dialogZindex-1)
+	});
+	$('a.'+de.closeClassLink).css({
+	'position':'absolute',
+	'display':'block',
+	'float':'right',
+	'top':'-10px',
+	'right':'-10px',
+	'width':'16px',
+	'height':'16px',
+	'background':de.closeBackground,
+	'text-decoration':'none'
+	});
+	$('#'+de.wallId).height(deGetDocumentSize().height);
+	$('#'+de.wallId).width(deGetDocumentSize().width);
+}
+return "Dement.ru";}
+});
+
+
+
+

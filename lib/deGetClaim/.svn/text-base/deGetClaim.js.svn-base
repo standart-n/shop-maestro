@@ -1,0 +1,35 @@
+/*standart-n.ru*/ 
+var getClaim=jQuery.Class.create({		
+init:function(de){$(document).ready(function() { getClaim_init(); getClaim_code(); getClaim_css();
+});
+function getClaim_code() { de.code="";
+	de.code+='<div id="'+de.id+'">';
+	de.code+='123';
+	de.code+='</div>';
+	$(de.parent).html(de.code);
+}
+function getClaim_init() {
+    if (de.id==undefined) {de.id="getClaim";}
+    if (de.parent==undefined) {de.parent="body";}
+    if (de.width==undefined) {de.width="300px";}
+    if (de.padding==undefined) {de.padding="2px";}
+    if (de.border==undefined) {de.border="none";}
+    if (de.background==undefined) {de.background="none";}
+}
+function getClaim_css() {
+	$('#'+de.id).css({
+	'display':'none',
+	'float':'left',
+	'width':de.width,
+	'height':'auto',
+	'padding':de.padding,
+	'border':de.border,
+	'background':de.background
+	});
+}
+return "dement.ru";}
+});
+
+
+
+
