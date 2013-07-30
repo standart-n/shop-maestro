@@ -40,16 +40,16 @@ function article($q,$r,$img) { $u=$q->url; $s="";
 	$s.='		'.$q->tpl_price->label("price",$price,'label');
 	$s.='		</div>';
 	if ($q->results->showAddButton) {
-		if ($realquant>0) {
+		// if ($realquant>=0) {
 			$s.=		'<div id="article-buy">';
 			$s.=		'<input onMouseOver="articleBtnAddOver();" onMouseLeave="articleBtnAddLeave();" ';
 			$s.=		'class="btn-article-add-disable" type="submit" id="btn-article-add" value="Добавить в корзину">';
 			$s.=		'</div>';
-		} else {
-			$s.=		'<div id="article-buy">';
-			$s.=		'<span class="label-zero">Нет в наличии</span>';
-			$s.=		'</div>';
-		}
+		// } else {
+		// 	$s.=		'<div id="article-buy">';
+		// 	$s.=		'<span class="label-zero">Нет в наличии</span>';
+		// 	$s.=		'</div>';
+		// }
 	}
 	if (isset($q->results->add)) {
 		$s.=		'<div id="article-result">';

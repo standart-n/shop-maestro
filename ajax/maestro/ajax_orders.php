@@ -145,14 +145,14 @@ function editQuant(&$q) {  $s=""; $j=&$q->json; $u=&$q->url;
 			if (isset($r)) { if (isset($r->PART_ID)) { if ($r->PART_ID>0) {
 				$max=floatval($r->REALQUANT);
 				$price=floatval($r->PRICE);
-				if ($max>0) {
-					if ($max-$count>=0) {
-						$errorType=0;
-					} else {
-						$errorType=2;
-						$count=$max;	
-					}
-				}
+				// if ($max>0) {
+				// 	if ($max-$count>=0) {
+				// 		$errorType=0;
+				// 	} else {
+				// 		$errorType=2;
+				// 		$count=$max;	
+				// 	}
+				// }
 				$summ=floatval($price*$count);
 				if (isset($q->user->order->id)) {
 					if ($q->orders->editQuant($q,$count)) {

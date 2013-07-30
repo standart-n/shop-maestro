@@ -27,7 +27,8 @@ function settings(&$q) {
 
 function actionAdd(&$q) { $add=false;
 	if (!$q->orders->partIsAdded($q)) { 
-		if ($this->getRealQuant($q)-$q->url->count>=0) {
+		//if ($this->getRealQuant($q)-$q->url->count>=0) {
+		if ($this->getRealQuant($q)>=0) {
 			if ((isset($q->user->id)) && (isset($q->user->order->id))) {
 				if ($q->orders->addPartToOrder($q,$q->url->id,$q->url->count)) {
 					$add=true;
@@ -70,7 +71,7 @@ function getRealQuant(&$q) { $count=0;
 	if (isset($q->url->id)) { if ($q->url->id>0) {
 		$sql=$q->sql_article->getRealQuant($q,$q->url->id);
 		if (query($q,$sql,$r)) {
-			if (isset($r)) { if (isset($r->REALQUANT)) { if ($r->REALQUANT>0) {
+			if (isset($r)) { if (isset($r->REALQUANT)) { if ($r->REALQUANT>=0) {
 				$count=$r->REALQUANT;
 			} } }
 		}
