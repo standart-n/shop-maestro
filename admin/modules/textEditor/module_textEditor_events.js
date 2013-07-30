@@ -384,28 +384,28 @@ function sub_limit_fivty() {
 
 function sub_save() {
 
-	docu=deDoc.body.innerHTML;
-	docu=docu.replace(new RegExp('<link href=\"modules/textEditor/module_textEditor_style.css\" rel=\"stylesheet\" type=\"text/css\">','gi'),'');
-	docu=docu.replace(new RegExp("<html>",'gi'),'');
-	docu=docu.replace(new RegExp("<\/html>",'gi'),'');
-	docu=docu.replace(new RegExp("<head>",'gi'),'');
-	docu=docu.replace(new RegExp("<\/head>",'gi'),'');
-	docu=docu.replace(new RegExp("<body>",'gi'),'');
-	docu=docu.replace(new RegExp("<\/body>",'gi'),'');
-	docu=docu.replace(new RegExp("<script>",'gi'),'');
-	docu=docu.replace(new RegExp("<\/script>",'gi'),'');
-	docu=docu.replace(new RegExp("<object>",'gi'),'');
-	docu=docu.replace(new RegExp("<\/object>",'gi'),'');
-	docu=docu.replace(new RegExp("<embed>",'gi'),'');
-	docu=docu.replace(new RegExp("<\/embed>",'gi'),'');
-	docu=docu.replace(new RegExp("<iframe>",'gi'),'');
-	docu=docu.replace(new RegExp("<\/iframe>",'gi'),'');
-	docu=docu.replace(new RegExp("<frame>",'gi'),'');
-	docu=docu.replace(new RegExp("<\/frame>",'gi'),'');
-	docu=docu.replace(new RegExp("<b>",'gi'),'<strong>');
-	docu=docu.replace(new RegExp("<\/b>",'gi'),'</strong>');
-	docu=docu.replace(new RegExp("\"\.\.\/files\/",'gi'),"\"files\/");
-	docu=docu.replace(new RegExp("\"\.\.\/photo\/",'gi'),"\"photo\/");
+	docu=deDoc.firstChild.innerHTML;
+	docu=docu.replace(new RegExp('<link href=\"modules/textEditor/module_textEditor_style.css\" rel=\"stylesheet\" type=\"text/css\">','g'),'');
+	docu=docu.replace(new RegExp("<html>",'g'),'');
+	docu=docu.replace(new RegExp("<\/html>",'g'),'');
+	docu=docu.replace(new RegExp("<head>",'g'),'');
+	docu=docu.replace(new RegExp("<\/head>",'g'),'');
+	docu=docu.replace(new RegExp("<body>",'g'),'');
+	docu=docu.replace(new RegExp("<\/body>",'g'),'');
+	docu=docu.replace(new RegExp("<script>",'g'),'');
+	docu=docu.replace(new RegExp("<\/script>",'g'),'');
+	docu=docu.replace(new RegExp("<object>",'g'),'');
+	docu=docu.replace(new RegExp("<\/object>",'g'),'');
+	docu=docu.replace(new RegExp("<embed>",'g'),'');
+	docu=docu.replace(new RegExp("<\/embed>",'g'),'');
+	docu=docu.replace(new RegExp("<iframe>",'g'),'');
+	docu=docu.replace(new RegExp("<\/iframe>",'g'),'');
+	docu=docu.replace(new RegExp("<frame>",'g'),'');
+	docu=docu.replace(new RegExp("<\/frame>",'g'),'');
+	docu=docu.replace(new RegExp("<b>",'g'),'<strong>');
+	docu=docu.replace(new RegExp("<\/b>",'g'),'</strong>');
+	docu=docu.replace(new RegExp("\"\.\.\/files\/",'g'),"\"files\/");
+	docu=docu.replace(new RegExp("\"\.\.\/photo\/",'g'),"\"photo\/");
 
 	document.getElementById("idSave_txt").value=docu;
 	document.getElementById("idFrmSave").submit();

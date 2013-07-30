@@ -2,7 +2,7 @@
 
 	session_start();
 
-	include_once('../../../class/class_base.php');
+	include_once('../../class/class_base.php');
 	include_once('../../../functions/fn_ajax.php');
 	include_once('../../../functions/fn_js.php');
 	include_once('module_fileImport.php');

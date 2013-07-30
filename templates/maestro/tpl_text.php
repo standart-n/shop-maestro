@@ -40,4 +40,15 @@ function text($q) { $u=$q->url; $s=""; $t="";
 	return $s;
 }
 
+function show($caption,$text) { $s="";
+	$s.='<div id="text">';
+	$s.='<h2>'.$caption.'</h2>';
+	$s.='<hr>';
+	$s.='<div class="text-body">';
+	$s.=$text;
+	$s.='</div>';
+	$s.='</div>';
+	return $s;
+}
+
 } ?>

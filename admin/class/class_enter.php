@@ -31,14 +31,14 @@ function engine() { $tm=time()+(3600*24*31);
 		if ($act=="enter") {
 			if ((isset($_POST['nmLogin'])) && (isset($_POST['nmPassword']))) {
 				if (($_POST['nmLogin']!="") && ($_POST['nmPassword']!="")) {
-					$login=base64_encode(trim($_POST['nmLogin']));
-					$password=base64_encode($this->gen(trim($_POST['nmPassword'])));
+					$login=trim($_POST['nmLogin']);
+					$password=$this->gen(trim($_POST['nmPassword']));
 					if ((isset($this->db)) && (isset($this->prefix))) {
 						$res=mysql_query("SELECT * FROM `".$this->prefix."_dataAdmins` WHERE (login=\"$login\")",$this->db);
 						if (isset($res)) { if ($res) {
 							$row=mysql_fetch_array($res);
 							if (isset($row)) { if ((isset($row['password'])) && (isset($row['login'])) && (isset($row['name'])) && (isset($row['id']))) {
-								if (($row['password']!="") && ($row['login']!="") && ($row['name']!="") && ($row['id']!="")) { 
+								if (($row['password']!="") && ($row['login']!="") && ($row['name']!="") && ($row['id']!="")) {
 									if ($row['password']==$password) {
 										$_SESSION[$fa.'in']="TRUE";
 										foreach(explode("|","id|name|login|password") as $key) {
@@ -61,9 +61,6 @@ function check_user() {
 		if (isset($_SESSION[$fa."in"])) { return $_SESSION[$fa."in"]; } else { return "FALSE"; }
 	} else { return "FALSE"; }
 }
-function gen($psw) { $len=strlen($psw); $count=pow($len,round(sqrt($len)));
-	for ($i=0;$i<$count;$i++) { $psw=md5(md5($psw).md5($i)); } 
-	return $psw;
-}
+function gen($psw) { return sha1($psw); }
 
 } ?>

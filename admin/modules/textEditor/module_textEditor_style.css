@@ -10,7 +10,7 @@
 	a:link{
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
-	color:#006699;
+	color:#660000;
 	text-decoration:underline;
 	outline:none;
 	}
@@ -19,23 +19,23 @@
 	a:visited{
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
-	color:#006699;
+	color:#660000;
 	text-decoration:underline;
 	outline:none;
-    	}
+    }
 
 	a:hover{
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
-	color:#990000;
-	text-decoration:underline;
+	color:#660000;
+	text-decoration:none;
 	outline:none;
 	}
 
 	a{
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
-	color:#006699;
+	color:#660000;
 	text-decoration:underline;
 	outline:none;
 	}

@@ -26,7 +26,7 @@ var $list_now;
 var $list_count;
 var $row_count_all;
 var $row_count_now;
-var $row_max=10;
+var $row_max=1000;
 var $limit;
 
 function engine() {

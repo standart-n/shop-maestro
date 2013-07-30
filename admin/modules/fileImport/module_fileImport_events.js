@@ -18,7 +18,7 @@ $(document).ready(function () {
 
 function fileImport_list(type) {
 
-	document.getElementById("deAjax").innerHTML="MSIE...<script></script>";
+	document.getElementById("deAjax").innerHTML="MSIE...<script></" + "script>";
 	deUrl="modules/fileImport/module_fileImport_list.php?type="+type;
 	$('#deAjax').animate({top: '1px'},10,"linear",function(){	
 		sendscipt(deUrl); 

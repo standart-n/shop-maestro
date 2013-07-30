@@ -196,8 +196,8 @@ function save_text() {
 		if (isset($_POST['nmSave_txt']))	{
 			$id=	$_POST['nmSave_sub_id'];
 			$text=	$_POST['nmSave_txt'];
-			$text=	str_replace('"','\"',$text);
-			$text=addslashes(stripslashes($text));
+			//$text=	str_replace('"','\"',$text);
+			//$text=addslashes(stripslashes($text));
             $sql_upd="UPDATE `".$this->sub_tbl."` SET text=\"$text\",last_dt=NOW(),last_t=NOW(),last_d=NOW() WHERE id=".$id." ";
 			$res=mysql_query($sql_upd,$this->db);
 		}
@@ -218,55 +218,55 @@ function save_text() {
 		}
 
 		if (isset($_POST['nmTextCaption'])) {
-			$caption=strval(htmlspecialchars($_POST['nmTextCaption']));
+			$caption=strval($_POST['nmTextCaption']);
 			$sql_upd="UPDATE `".$this->sub_tbl."` SET `caption`=\"$caption\" WHERE id=".$id." ";
 			$res=mysql_query($sql_upd,$this->db);
 		}
 	
 		if (isset($_POST['nmTextName'])) {	
-			$name=strval(htmlspecialchars($_POST['nmTextName']));
+			$name=strval($_POST['nmTextName']);
 			$sql_upd="UPDATE `".$this->sub_tbl."` SET `name`=\"$name\" WHERE id=".$id." ";
 			$res=mysql_query($sql_upd,$this->db);
 		}
 
 		if (isset($_POST['nmTextTitle'])) {	
-			$name=strval(htmlspecialchars($_POST['nmTextTitle']));
+			$name=strval($_POST['nmTextTitle']);
 			$sql_upd="UPDATE `".$this->sub_tbl."` SET `title`=\"$name\" WHERE id=".$id." ";
 			$res=mysql_query($sql_upd,$this->db);
 		}
 
 		if (isset($_POST['nmTextGroup'])) {	
-			$name=strval(htmlspecialchars($_POST['nmTextGroup']));
+			$name=strval($_POST['nmTextGroup']);
 			$sql_upd="UPDATE `".$this->sub_tbl."` SET `group`=\"$name\" WHERE id=".$id." ";
 			$res=mysql_query($sql_upd,$this->db);
 		}
 
 		if (isset($_POST['nmTextKey'])) {	
-			$name=strval(htmlspecialchars($_POST['nmTextKey']));
+			$name=strval($_POST['nmTextKey']);
 			$sql_upd="UPDATE `".$this->sub_tbl."` SET `key`=\"$name\" WHERE id=".$id." ";
 			$res=mysql_query($sql_upd,$this->db);
 		}
 	
 		if (isset($_POST['nmTextDescr'])) {
-			$descr=strval(htmlspecialchars($_POST['nmTextDescr']));
+			$descr=strval($_POST['nmTextDescr']);
 			$sql_upd="UPDATE `".$this->sub_tbl."` SET `description`=\"$descr\" WHERE id=".$id." ";
 			$res=mysql_query($sql_upd,$this->db);
 		}
 	
 		if (isset($_POST['nmTextKeywords'])) {
-			$keywords=strval(htmlspecialchars($_POST['nmTextKeywords']));
+			$keywords=strval($_POST['nmTextKeywords']);
 			$sql_upd="UPDATE `".$this->sub_tbl."` SET `keywords`=\"$keywords\" WHERE id=".$id." ";
 			$res=mysql_query($sql_upd,$this->db);
 		}
 
 		if ((isset($_POST['nmTextGroup'])) && (isset($_POST['nmTextName']))) {	
-			$name=strval(htmlspecialchars($_POST['nmTextName']));
-			$group=strval(htmlspecialchars($_POST['nmTextGroup']));
+			$name=strval($_POST['nmTextName']);
+			$group=strval($_POST['nmTextGroup']);
             //$path="/de.".$group.".".$name."/";
             $path="";
-            if ($group!="") { $path.=".".$group; }
-            if ($name!="") { $path.=".".$name; }
-            if ($path!="") { $path="/de".$path."/"; }
+            //if ($group!="") { $path.=".".$group; }
+            if ($name!="") { $path.=$name; }
+            if ($path!="") { $path=$path; }
              
 			$sql_upd="UPDATE `".$this->sub_tbl."` SET `path`=\"$path\" WHERE id=".$id." ";
 			$res=mysql_query($sql_upd,$this->db);
@@ -309,8 +309,10 @@ function set_item() {
 	$sql_upd="";
 	if (isset($_POST['nmDelPart']))	{
 		if (isset($_POST['nmSetItem']))	{
-			$part=intval(htmlspecialchars($_POST['nmDelPart']));
-			$item=strval(htmlspecialchars($_POST['nmSetItem']));
+			//$part=intval(htmlspecialchars($_POST['nmDelPart']));
+			//$item=strval(htmlspecialchars($_POST['nmSetItem']));
+			$part=intval($_POST['nmDelPart']);
+			$item=strval($_POST['nmSetItem']);
 			if ($part!="") {
 				$sql_upd="UPDATE `".$this->prefix."_dataTexts` set part_id=".$part." WHERE (id=".$item.") ";
 				$res=mysql_query($sql_upd,$this->db);
@@ -407,13 +409,14 @@ function sub_open() {
 	$row=mysql_fetch_array($res);
 	if ($row['id']) {
 
-		$ms['caption']=	    strval(htmlspecialchars($row['caption']));
-		$ms['name']=		strval(htmlspecialchars($row['name']));
-		$ms['title']=	    strval(htmlspecialchars($row['title']));
-		$ms['group']=	    strval(htmlspecialchars($row['group']));
-		$ms['key']=	        strval(htmlspecialchars($row['key']));
-		$ms['descr']=	    strval(htmlspecialchars($row['description']));
-		$ms['keywords']=	strval(htmlspecialchars($row['keywords']));
+		$ms['caption']=	    strval(addslashes($row['caption']));
+		//$ms['caption']=	    strval($row['caption']);
+		$ms['name']=		strval($row['name']);
+		$ms['title']=	    strval($row['title']);
+		$ms['group']=	    strval($row['group']);
+		$ms['key']=	        strval($row['key']);
+		$ms['descr']=	    strval($row['description']);
+		$ms['keywords']=	strval($row['keywords']);
 
 		$text=			$row['text'];
 		$text=			str_replace('"photo/','"../photo/',$text);
@@ -424,7 +427,7 @@ function sub_open() {
 		$text=			str_replace("\r\n","",$text);
        	$text=          ltrim($text);
         $text=          rtrim($text);
-		$text=addslashes(stripslashes($text));
+		$text=addslashes(stripcslashes($text));
         $ms['text']=$text;
         
 		$html=			"";
@@ -511,7 +514,7 @@ function showSubSettings() {
 
 	$show.=		'<tr>';
 	$show.=		'<td align="left" width="200px">';
-	$show.=		'<span class="clLabel">Псевдоним</span>';
+	$show.=		'<span class="clLabel">Имя</span>';
 	$show.=		'</td>';
 	$show.=		'<td>';
 	$show.=		'<input class="option_input" type="text" name="nmTextName" id="idTextName" size="40" value="">';
@@ -798,7 +801,7 @@ function module() {
 	$show.='"deMdlSmile"'; 
 	$show.=');';
 	$show.='</script>';			
-/*
+
 	$show.='<script type="text/javascript">';						
 	$show.='new deShowEasyDialog('; 	
 	$show.='"deTextEditorFramebtnImg",';	
@@ -824,7 +827,7 @@ function module() {
 	$show.='"10"'; 
 	$show.=');';													
 	$show.='</script>';			
-*/
+
 	
     return $show;
 
